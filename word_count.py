@@ -15,10 +15,13 @@ if __name__ == "__main__":
     parser.add_argument("-w", action="store_true", help="count words in file")
     args = parser.parse_args()
 
-
+       #can't check any files that start with "-[flags]". Program will either not find the file, or worse, give count from
+       #from another file, if names are unfortunate enough. Eg: wc "-lmaa.txt" could potentially check file "aa.txt" if it exists, 
+       #but it will never check the desired file. More of a problem with argparser than this particular program, but still.
+    
     filename = args.filename
-    file_with_text = open(filename, "r")
-    text = file_with_text.read()
+    file_with_text = open(filename, "r)
+    text = file_with_text.read() #reading whole file at once, not lines or a number of  bytes
     file_with_text.close()
 
     print("   ", end="")
@@ -32,6 +35,9 @@ if __name__ == "__main__":
     if args.c:
         print(count_bytes(filename), end=" ")
 
+            #output is pretty ambiguous, can't tell which is the number of lines, which is the number of chars, etc.
+            #wc is the same, but it states the order of outputs in help messages.
+                          
     if args.m and not args.c:
         print(len(text), end=" ")
 
