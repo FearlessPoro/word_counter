@@ -51,3 +51,5 @@ if __name__ == "__main__":
     #while going through the file once.
 
     print(filename)
+                          
+    #can only check one file, original wc works differently, but this wasn't specified in the exercise
