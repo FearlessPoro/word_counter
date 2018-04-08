@@ -21,7 +21,8 @@ if __name__ == "__main__":
     
     filename = args.filename
     file_with_text = open(filename, "r)
-    text = file_with_text.read() #reading whole file at once, not lines or a number of  bytes
+    text = file_with_text.read()
+    #reading whole file at once, not lines or a number of bytes, will be a problem if files are bigger than RAM
     file_with_text.close()
 
     print("   ", end="")
@@ -45,5 +46,8 @@ if __name__ == "__main__":
         print(count_lines(text), end=" ")
         print(count_words(text), end=" ")
         print(count_bytes(filename), end=" ")
+                          
+    #this program is pretty poorly optimized, reading the same file potentially 4 times, all of this could easily be done
+    #while going through the file once.
 
     print(filename)
